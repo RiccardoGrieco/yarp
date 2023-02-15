@@ -423,7 +423,7 @@ bool yarp::robotinterface::Device::attach(const yarp::dev::PolyDriverList& drive
     yarp::dev::IMultipleWrapper* multiplewrapper;
     driver()->view(multiplewrapper);
 
-    if (drivers.size() == 1) {
+    if (!multiplewrapper && drivers.size() == 1) {
         yarp::dev::IWrapper* wrapper;
         if (!driver()->view(wrapper)) {
             yInfo() << name() << "is not an IWrapper. Trying IMultipleWrapper";
